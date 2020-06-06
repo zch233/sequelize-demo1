@@ -9,11 +9,17 @@ User.init({
   birthday: DataTypes.DATE
 }, { sequelize, modelName: 'user' });
 
+
 (async () => {
-  await sequelize.sync();
-  const jane = await User.create({
-    username: 'janedoe',
-    birthday: new Date(1980, 6, 20)
-  });
-  console.log(jane.toJSON());
+  const jane = await User.findAll()
+  console.log(JSON.stringify(jane));
 })();
+
+// (async () => {
+//   await sequelize.sync();
+//   const jane = await User.create({
+//     username: 'janedoe',
+//     birthday: new Date(1980, 6, 20)
+//   });
+//   console.log(jane.toJSON());
+// })();
