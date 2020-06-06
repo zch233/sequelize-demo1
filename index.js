@@ -9,11 +9,23 @@ User.init({
   birthday: DataTypes.DATE
 }, { sequelize, modelName: 'user' });
 
-
 (async () => {
+  User.destroy({
+    where: {
+      id: 1
+    }
+  })
   const jane = await User.findAll()
   console.log(JSON.stringify(jane));
+  sequelize.close()
 })();
+
+
+// (async () => {
+//   const jane = await User.findAll()
+//   console.log(JSON.stringify(jane));
+//   sequelize.close()
+// })();
 
 // (async () => {
 //   await sequelize.sync();
